@@ -1,0 +1,24 @@
+[root@training ~]# puppet resource package
+[root@training ~]# puppet resource host
+
+1. Create a new manifest file called motd.pp:
+
+vim motd.pp
+
+2. In that file create a class named motd that will manage the /etc/motd file in a given state.
+
+3. The file resource that your class contains might look similar to:
+
+file { '/etc/motd':
+  ensure  => file,
+  owner   => 'root',
+  group   => 'root',
+  content => 'Hello world! Puppet is awesome.',
+}
+4. Run puppet parser validate motd.pp to validate your syntax.
+
+5. Apply your manifest with puppet apply motd.pp. Notice that no changes were made. Why is that?
+
+6.Add the line include motd to the end of your manifest and apply it again. Can you explain why you saw the results you did?
+
+example_solution.pdf
